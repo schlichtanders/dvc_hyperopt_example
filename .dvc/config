@@ -1,0 +1,4 @@
+['remote "local"']
+url = D:/tmp2/dvc-storage
+[core]
+remote = local
