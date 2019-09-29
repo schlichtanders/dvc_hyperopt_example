@@ -1,0 +1,8 @@
+md5: 1149ef1e43c04e15d229f3366692f3dc
+cmd: python compute_score.py > metrics
+outs:
+- md5: 3529a08864f57bf05cf72d280c8dd415
+  path: metrics
+  cache: true
+  metric: true
+  persist: false
