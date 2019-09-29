@@ -19,18 +19,15 @@ parser.add_argument("--max", dest='optimizer', action='store_const', const=max, 
 parser.add_argument("--metric")
 
 args = parser.parse_args()
-
 assert not args.branch_subfolder.endswith("/"), "assuming branch_subfolder is given without trailing slash"
 
-"""
-hyperopt/1:
-        score.txt: 0.9
-hyperopt/2:
-        score.txt: 0.73
-"""
+
+# get metrics information from dvc
 metrics = check_output(["dvc", "metrics", "show", "-a", args.metric]).splitlines()
+print("\n".join(metrics))
 
 branchnames = metrics[0::2]  # every odd should be a branch name
+assert all(not name.startswith("\t") for name in branchnames), "More than one metric selected, aborting."  # every second row should refer to branchname if only one metric was choosen
 scores = [float(m[len(args.metric)+3:]) for m in metrics[1::2]]  # every even should be a metric value prepended by "metricname: "
 
 metrics_subset = [name, score for name, score in zip(branchnames, scores) if name.startswith(args.branch_subfolder)]
