@@ -1,0 +1,8 @@
+md5: 4ab005652b3fb18d0a814fc5c78e6b5d
+cmd: python compute_score.py > random.metric
+outs:
+- md5: f8398b19298d5c429774d935c64daa77
+  path: random.metric
+  cache: false
+  metric: true
+  persist: false
