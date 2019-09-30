@@ -1,8 +1,0 @@
-md5: b2729c4f1f171ba3b4927555361b49de
-cmd: python compute_score.py > score
-outs:
-- md5: 3c3f65e8466c6978f58ce1f517feacf4
-  path: score
-  cache: true
-  metric: true
-  persist: false
