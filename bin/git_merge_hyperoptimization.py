@@ -30,7 +30,7 @@ print("\n".join(metrics))
 
 branchnames = metrics[0::2]  # every odd should be a branch name
 assert all(not name.startswith("\t") for name in branchnames), "More than one metric selected, aborting."  # every second row should refer to branchname if only one metric was choosen
-scores = [float(m[len(args.metric)+3:]) for m in metrics[1::2]]  # every even should be a metric value prepended by "metricname: "
+scores = [float(m[len(args.metric)+4:]) for m in metrics[1::2]]  # every even should be a metric value prepended by "\tmetricname: "
 
 metrics_subset = [(name, score) for name, score in zip(branchnames, scores) if name.startswith(args.branch_subfolder)]
 best_branch = args.optimizer(metrics_subset, key=lambda t:t[1])[0]
